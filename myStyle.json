@@ -1,0 +1,7 @@
+{
+    "default": "",
+    "http://www.cnblogs.com/TomXu/": "#sidebar{display: none;} #wrapper #content {margin-right: 465px; min-height: 600px;width: 800px;margin: 0 auto;}",
+    "http://www.html-js.com/article": "#article #content .left{margin: 0 auto; width: 750px;} #article .right{display: none;} #content .ad-blank,.ad-blank, #content .tip-point, #content .alert{display: none}",
+    "http://www.w3cplus.com": "#branding,#content-ad,#sidebar-second{display: none;} #page .main-wrap{width: 885px; margin: 0 auto;}",
+    "http://www.css88.com": "#googlead{display: none;} #baiduguanggao1{display: none;}"
+}
