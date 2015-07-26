@@ -3,15 +3,27 @@
     "version": "1.0",
     "manifest_version": 2,
     "description": "开启阅读模式",
-    "icons": {"128": "icon-open.png"},
+    "icons": {
+        "128": "icon-open.png"
+    },
     "browser_action": {
         "default_icon": "icon-close.png",
-        "default_title": "阅读模式"
+        "default_title": "阅读模式",
+        "default_popup": "popup.html"
     },
+    // "file_browser_handlers": [{
+    //     "id": "upload",
+    //     "default_title": "Save to Gallery", // What the button will display
+    //     "file_filters": [
+    //         "filesystem:*.jpg", // To match all files, use "filesystem:*.*"
+    //         "filesystem:*.jpeg",
+    //         "filesystem:*.png"
+    //     ]
+    // }],
     "permissions": [
-        "activeTab"
-    ],
-    "background": {
-        "scripts": ["js/jquery.min.js","js/main.js"]
-    }
+        //"fileBrowserHandler",
+        "activeTab",
+        "webNavigation",
+        "tabs"
+    ]
 }
