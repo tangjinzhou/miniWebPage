@@ -1,7 +1,18 @@
 {
-    "default": "",
-    "http://www.cnblogs.com/TomXu/": "#sidebar{display: none;} #wrapper #content {margin-right: 465px; min-height: 600px;width: 800px;margin: 0 auto;}",
-    "http://www.html-js.com/article": "#article #content .left{margin: 0 auto; width: 750px;} #article .right{display: none;} #content .ad-blank,.ad-blank, #content .tip-point, #content .alert{display: none}",
-    "http://www.w3cplus.com": "#branding,#content-ad,#sidebar-second{display: none;} #page .main-wrap{width: 885px; margin: 0 auto;}",
-    "http://www.css88.com": "#googlead{display: none;} #baiduguanggao1{display: none;}"
+    "http://www.cnblogs.com/TomXu": {
+        "css": "#sidebar{display: none;} #wrapper #content {margin-right: 465px; min-height: 600px;width: 800px;margin: 0 auto;}",
+        "title": "汤姆大叔的博客"
+    },
+    "http://www.html-js.com/article": {
+        "css": "#article #content .left{margin: 0 auto; width: 750px;} #article .right{display: none;} #content .ad-blank,.ad-blank, #content .tip-point, #content .alert{display: none}",
+        "title": "前端乱炖"
+    },
+    "http://www.w3cplus.com": {
+        "css": "#branding,#content-ad,#sidebar-second{display: none;} #page .main-wrap{width: 885px; margin: 0 auto;}",
+        "title": "w3cplus"
+    },
+    "http://www.css88.com": {
+        "css": "#googlead{display: none;} #baiduguanggao1{display: none;}",
+        "title": "css88前端开发"
+    }
 }

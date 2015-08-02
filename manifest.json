@@ -11,6 +11,7 @@
         "default_title": "阅读模式",
         "default_popup": "popup.html"
     },
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
     // "file_browser_handlers": [{
     //     "id": "upload",
     //     "default_title": "Save to Gallery", // What the button will display
@@ -22,6 +23,7 @@
     // }],
     "permissions": [
         //"fileBrowserHandler",
+        "storage",
         "activeTab",
         "webNavigation",
         "tabs"

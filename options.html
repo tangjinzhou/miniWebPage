@@ -9,63 +9,91 @@
 </head>
 
 <body>
-    <div class="container theme-showcase">
-        <div class="page-header">
-            <h1>使用说明:</h1>
-            <p></p>
-        </div>
+    <div class="container theme-showcase" style="padding: 50px 0;">
         <div class="row" id="rule-container">
             <div class="col-sm-3">
-                <div class="panel panel-default add-rule cursor">
+                <div class="panel panel-default cursor add">
                     <div class="panel-heading">
                         <h3 class="panel-title">+</h3>
                     </div>
-                    <div class="panel-body style-wrap" style="font-size: 20px;">
+                    <div class="panel-body" style="font-size: 30px;height: 80px;">
                         添加
                     </div>
                 </div>
             </div>
-            <div class="col-sm-3">
-                <div class="panel panel-success">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Panel title</h3>
-                    </div>
-                    <div class="panel-body style-wrap">
-<p class="textEll2">nfisafksalkeifsakfllakklfieofaofdksalnfisafksalkeifsakfllakklfieofaofdksalnfisafksalkeifsakfllakklfieofaofdksal</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-3">
+            <!--             <div class="col-sm-3">
                 <div class="panel panel-default cursor more-panel">
-                    <div class="panel-heading" style="padding: 34px 15px;text-align: center;">
+                    <div class="panel-heading" style="padding: 40px 15px;text-align: center;">
                         <h3 class="panel-title" style="font-size: 34px; color: grey;">更多...</h3>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- /.col-sm-3 -->
+        </div>
+        <div class="page-header">
+            <h1>使用说明:</h1>
+            <p>
+                <ul>
+                    <li>1.任意填写标题，便于查找；</li>
+                    <li>2.url链接支持http和https协议，如指定了链接https://www.google.com/abc
+                        <br> 那么自定义的样式及脚本只能在https://www.google.com/abc**网页中执行，
+                        <br> 不能在https://www.google.com/cde下执行；
+                    </li>
+                    <li>3.样式规则需满足css规范，不支持less,sass等，部分顽固广告可使用脚本屏蔽；</li>
+                    <li>4.对于脚本，如有可能，请现在控制台执行，确保正确有效；</li>
+                    <li>5.打开添加过规则的网页，点击工具tab(浏览器右上角工具logo)，在弹框中点击“阅读模式”便可使用相应规则，执行相应脚本，<br>
+                    如"阅读模式"不可点击，请选择自定义，确保规则设置正确；
+                    </li>
+                    <li>6.本工具还在内测中，如有好的建议请联系tjz415800467@163.com，感激不尽;</li>
+                </ul>
+            </p>
         </div>
     </div>
     <div class="modal fade">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        <p>One fine body&hellip;</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-     <script type="text/javascript" src="js/bootstrap-dialog.min.js"></script>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    <p>One fine body&hellip;</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <script type="text/template" id="itemTpl">
+        <% for (var i = 0, len = rules.length; i < len; i++){%>
+            <div class="col-sm-3">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><%= rules[i][1].title %></h3>
+                    </div>
+                    <div class="panel-body style-wrap">
+                        <p class="textEll2">
+                            <%= rules[i][1].css %>
+                        </p>
+                    </div>
+                    <div class="clearfix">
+                        <span class="delete pull-right cursor" data-ruleurl="<%= rules[i][0] %>">删除</span>
+                        <span class="update pull-right cursor" data-title="<%= rules[i][1].title%>" data-ruleurl="<%= rules[i][0] %>" data-css="<%= rules[i][1].css %>" data-script="<%= rules[i][1].script %>">修改</span>
+                        <a href="<%= rules[i][0] %>" target="_blank" class="open pull-right">打开</a>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+    </script>
+    <script type="text/javascript" src="js/lib/jquery.min.js"></script>
+    <script type="text/javascript" src="js/lib/underscore.js"></script>
+    <script type="text/javascript" src="js/lib/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/lib/bootstrap-dialog.min.js"></script>
     <script type="text/javascript" src="js/options.js"></script>
 </body>
 

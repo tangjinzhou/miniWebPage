@@ -2,19 +2,27 @@ $(function() {
     var myStyles = {},
         myTabs = [],
         cssCode = '',
+        scriptCode = '',
         tab = {},
         $reader = $('#reader'),
         $addRule = $('#addRule'),
         havaReader = true;
 
-    $.get('/myStyle.json', function(resObj) {
-        var resObj = JSON.parse(resObj);
+    chrome.storage.sync.get(null, function(data) {
+        var resObj;
+        if(_.size(data) > 0){
+            resObj = data;
+        } else {
+            $.get('/myStyle.json', function(res) {
+                resObj = JSON.parse(res);
+                chrome.storage.sync.set(resObj);
+            });
+        }
         for (var key in resObj) {
             myStyles[key.toLowerCase()] = resObj[key];
             myTabs.push(key.toLowerCase());
         };
-    });
-
+    })
     chrome.windows.getCurrent(function(currentWindow) {
         chrome.tabs.query({
                 active: true,
@@ -30,12 +38,14 @@ $(function() {
     function updataCSS() {
         var tabUrl = tab.url.split('?')[0].toLowerCase();
         if (myStyles[tabUrl]) {
-            cssCode += myStyles[tabUrl];
+            cssCode += myStyles[tabUrl].css;
+            scriptCode += myStyles[tabUrl].script || '';
         } else {
             for (var i = 0, len = myTabs.length; i < len; i++) {
                 if (tabUrl.indexOf(myTabs[i]) > -1) {
                     tabUrl = myTabs[i];
-                    cssCode += myStyles[tabUrl];
+                    cssCode += myStyles[tabUrl].css || '';
+                    scriptCode += myStyles[tabUrl].script || '';
                     break;
                 }
             }
@@ -56,6 +66,8 @@ $(function() {
             chrome.tabs.insertCSS(tab.tabId, {
                 code: cssCode
             });
+            scriptCode = 'try{' + scriptCode + '}catch(e){}';
+            chrome.tabs.executeScript(tab.tabId, {code: scriptCode})
         }
     })
 
