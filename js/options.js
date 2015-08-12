@@ -1,7 +1,6 @@
 $(function() {
     var $ruleContainer = $('#rule-container');
     chrome.storage.sync.get(null, function(data) {
-        console.log(data);
         var tpl = $('#itemTpl').html();
         var template = _.template(tpl);
         var html = template({

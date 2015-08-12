@@ -1,28 +1,18 @@
 {
-    "name": "简阅",
-    "version": "1.0",
+    "name": "CSS Change",
+    "version": "1.1",
     "manifest_version": 2,
-    "description": "开启阅读模式",
+    "description": "“CSS Change”可以让用户对网页自定义样式，嵌入脚本等。",
     "icons": {
         "128": "icon-open.png"
     },
     "browser_action": {
         "default_icon": "icon-close.png",
-        "default_title": "阅读模式",
+        "default_title": "CSS Change",
         "default_popup": "popup.html"
     },
     "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
-    // "file_browser_handlers": [{
-    //     "id": "upload",
-    //     "default_title": "Save to Gallery", // What the button will display
-    //     "file_filters": [
-    //         "filesystem:*.jpg", // To match all files, use "filesystem:*.*"
-    //         "filesystem:*.jpeg",
-    //         "filesystem:*.png"
-    //     ]
-    // }],
     "permissions": [
-        //"fileBrowserHandler",
         "storage",
         "activeTab",
         "webNavigation",
